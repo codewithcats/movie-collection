@@ -10,9 +10,9 @@ const SearchForm = () => (
 
 const MovieList = (props) => (
     <ul>
-    {props.movies.map(movie => {
+    {props.movies.map((movie, i) => {
         return (
-            <li>{movie.title}</li>
+            <li key={i}>{movie.title}</li>
         )
     })}
     </ul>

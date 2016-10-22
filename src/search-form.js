@@ -1,5 +1,4 @@
 import React from 'react'
-import axios from 'axios'
 
 export class SearchForm extends React.Component {
     constructor(props) {
@@ -10,8 +9,7 @@ export class SearchForm extends React.Component {
     }
     onSearchClick(event) {
         event.preventDefault()
-        console.log('this.onSearchClick', this.state.query)
-        axios.get(`http://www.omdbapi.com/?s=${this.state.query}&plot=short&r=json`)
+        this.props.onSearchSubmit(this.state.query)
     }
     onQueryChange(event) {
         const query = event.target.value

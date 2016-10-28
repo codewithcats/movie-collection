@@ -18,6 +18,9 @@ export class Search extends React.Component {
         this.state = {
             movies: []
         }
+        if (props.location.query.s) {
+            this.onSearch(props.location.query.s)
+        }   
     }
     onSearch(query) {
         axios.get(`http://www.omdbapi.com/?s=${query}&plot=short&r=json`)

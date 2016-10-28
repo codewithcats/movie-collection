@@ -8,8 +8,8 @@ import { Search } from './search/search'
 
 const Nav = () => (
     <nav>
-        <a>Home</a>
-        <a>Search</a>
+        <Link to="/">Home</Link>
+        <Link to="/search">Search</Link>
     </nav>
 )
 

@@ -10,9 +10,53 @@ import {
     IndexRoute
 } from 'react-router'
 
+/*
+ ?s=Batman
+ {
+     pathname: '/search',
+     query: {
+         s: "Batman"
+     }
+ }
+ ?s=Batman&p=2
+ {
+     pathname: '/search',
+     query: {
+         s: "Batman",
+         p: 2
+     }
+ }
+*/
+
+const batmanQuery = {
+    pathname: '/search',
+    query: {
+        s: 'batman'
+    }
+}
+
+const avengersQuery = {
+    pathname: '/search',
+    query: {
+        s: 'avengers'
+    }
+}
+
+const drStrangeQuery = {
+    pathname: '/search',
+    query: {
+        s: 'doctor strange'
+    }
+}
+
 const Home = () => (
     <section>
         <h1>This is home</h1>
+        <ul>
+            <li><Link to={batmanQuery}>Batman</Link></li>
+            <li><Link to={avengersQuery}>Avengers</Link></li>
+            <li><Link to={drStrangeQuery}>Doctor Strange</Link></li>
+        </ul>
     </section>
 )
 
@@ -44,6 +88,9 @@ class Search extends React.Component {
         super(props)
         this.state = {
             movies: []
+        }
+        if (props.location.query.s) {
+            this.onSearch(props.location.query.s)
         }
     }
     onSearch(query) {

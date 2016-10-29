@@ -5,11 +5,24 @@ import { SearchForm } from './search-form'
 import {
     Router,
     Route,
-    hashHistory
+    hashHistory,
+    Link
 } from 'react-router'
 
 const Home = () => (
-    <h1>This is home</h1>
+    <section>
+        <Nav />
+        <h1>This is home</h1>
+    </section>
+)
+
+const Nav = () => (
+    <nav>
+        <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/search">Search</Link></li>
+        </ul>
+    </nav>
 )
 
 const MovieList = (props) => (
@@ -44,6 +57,7 @@ class Search extends React.Component {
     render() {
         return (
             <section>
+                <Nav />
                 <h1>Movie Collection</h1>
                 <SearchForm onSearchSubmit={this.onSearch.bind(this)} />
                 <MovieList movies={this.state.movies} />

@@ -73,10 +73,15 @@ const Nav = () => (
 const MovieList = (props) => (
     <ul>
     {props.movies.map((movie, i) => {
+        const query = {
+            pathname: '/detail',
+            query: {
+                id: movie.imdbID
+            }
+        }
         return (
             <li key={i}>
-                <h4>{movie.Title}</h4>
-                <img src={movie.Poster} />
+                <h4><Link to={query}>{movie.Title}</Link></h4>
             </li>
         )
     })}

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "./node_modules/.bin/webpack --display-error-details",
-    "start": "./node_modules/.bin/webpack-dev-server --content-base dist"
+    "start": "npm run copy && ./node_modules/.bin/webpack-dev-server --content-base dist",
+    "copy": "cp ./src/index.html ./dist"
   },
   "author": "",
   "license": "ISC",

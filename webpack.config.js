@@ -1,15 +1,16 @@
 var webpack = require('webpack');
 var path = require('path');
+var ExtractText = require('extract-text-webpack-plugin');
 
 var config = {
     entry: {
-        hello: path.join(__dirname, 'src', 'app.js'),
+        app: path.join(__dirname, 'src', 'js', 'app.js')
     },
     module: {
         loaders: [
             {
                 test: /\.js$/,
-                include: path.join(__dirname, 'src'),
+                include: path.join(__dirname, 'src', 'js'),
                 loader: 'babel-loader',
                 query: {
                     presets: ['es2015', 'react']
@@ -17,14 +18,17 @@ var config = {
             },
             {
                 test: /\.css$/,
-                include: path.join(__dirname, 'src'),
-                loaders: ['style', 'css']
+                include: path.join(__dirname, 'src', 'css'),
+                loader: ExtractText.extract('style', 'css')
             }
         ]
     },
+    plugins: [
+        new ExtractText('[name].css')
+    ],
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: 'app.js'
+        filename: '[name].js'
     },
     devServer: {
         historyApiFallback: true,
